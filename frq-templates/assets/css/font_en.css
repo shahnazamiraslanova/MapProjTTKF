@@ -1,0 +1,60 @@
+/** Default css **/
+@font-face {
+	font-family: 'MarkPro';
+	src: url(../font/latin/MarkPro/MarkPro-Regular.otf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'MarkPro';
+	src: url(../font/latin/MarkPro/MarkPro-Bold.otf);
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'MarkPro';
+	src: url(../font/latin/MarkPro/MarkPro-Italic.otf);
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'MarkPro';
+	src: url(../font/latin/MarkPro/MarkPro-BoldItalic.otf);
+	font-style: italic;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: inter;
+	src: url(../font/InterRegular.otf);
+}
+
+/** Forced Latin **/
+@font-face {
+	font-family: 'MarkPro_Latin';
+	src: url(../font/latin/MarkPro/MarkPro-Regular.otf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'MarkPro_Latin';
+	src: url(../font/latin/MarkPro/MarkPro-Bold.otf);
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'MarkPro_Latin';
+	src: url(../font/latin/MarkPro/MarkPro-Italic.otf);
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'MarkPro_Latin';
+	src: url(../font/latin/MarkPro/MarkPro-BoldItalic.otf);
+	font-style: italic;
+	font-weight: bold;
+}
+
+.forcedLatin {
+	font-family: 'MarkPro_Latin'!important;
+}

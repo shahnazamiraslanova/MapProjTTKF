@@ -1,0 +1,23 @@
+/** Required **/
+div.frq_validation_error {
+}
+
+input.frq_validation_error {
+}
+
+input.frq_validation_success {
+}
+
+.frq-richtext-img-class-align-left {
+	float: left;
+	padding: 10px 10px 10px 0;
+}
+
+.frq-richtext-img-class-align-right {
+	float: right;
+	padding: 10px 0 10px 10px;
+}
+
+.frq-richtext-img-class-align-center {
+	padding: 10px 10px 10px 10px;
+}
