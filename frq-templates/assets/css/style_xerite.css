@@ -2,7 +2,7 @@
 .page-main-body {
     display: flex;
     justify-content: center;
-    
+    height: 115vh;
 }
 .page-main-body h2,h3,h4,h5,h6{
     margin-bottom: 0 !important;
@@ -156,12 +156,13 @@
 
 .details-overlay {
     display: none;
-    background-color: #1F262D73;
+    background-color: rgba(31, 38, 45, 0.45); /* Semi-transparent background */
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     z-index: 10;
+    backdrop-filter: blur(4px);
 
 }
 
@@ -189,6 +190,14 @@
 .details-overlay {
     justify-content: center;
 }
+.details-content{
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Yumuşak geçiş için */
+    opacity: 0; /* Başlangıçta şeffaf */
+    transform: scale(0.8);}
+    .details-overlay.show .details-content {
+        opacity: 1; /* Açıldığında opak */
+        transform: scale(1); /* Açıldığında normal boyutunda */
+    }
 
 .details-content-top {
     display: flex;
@@ -196,7 +205,7 @@
 }
 
 .details-content-article {
-    width: 30%;
+    width: 34%;
 }
 
 .map-details-content-statistic-main {
@@ -235,19 +244,20 @@
     flex-direction: column;
     gap: 12px;
     max-height: 410px;
-    overflow-y: auto;
     margin-top: 20px;
+    overflow: auto;
 
 }
 
+
 .map-details-statistic-each-bycity>div {
     position: relative;
-    width: 99%;
+    width: 100%;
     background-color: white;
     display: flex;
     /* justify-content: space-between; */
     z-index: 6;
-    padding: 16px;
+    padding: 10px;
     /* gap: 16px; */
     border-radius: 8px;
     border: 2px solid #1268B3;
@@ -267,6 +277,7 @@
     opacity: 0px;
     background-color: #1268B3;
     color: white;
+    font-size: 24px;
 }
 
 .map-details-statistic-main-bycity::-webkit-scrollbar {
@@ -276,11 +287,13 @@
 .map-details-statistic-main-bycity::-webkit-scrollbar-track {
     background: #1268B3;
     border-radius: 4px;
+    padding: 20px;
 }
 
 .map-details-statistic-main-bycity::-webkit-scrollbar-thumb {
     background: #FFFFFF;
     border-radius: 4px;
+     border: 1px solid #1268B3;
 }
 
 
@@ -374,8 +387,11 @@
 }
 
 @media screen and (max-width: 768px) {
+    .map-details-statistic-each-bycity>div div:nth-child(2){
+        margin-bottom: 12px;
+    }
     .details-overlay .container-width {
-        width: 100%;
+        width: 100% !important;
         align-items: center;
     }
 
@@ -385,20 +401,26 @@
 
 
     .map-details-statistic-each-bycity>div div {
+        
         width: 50%;
     }
 
-    .map-details-statistic-each-bycity>div div:first-child {
-        margin-bottom: 16px;
+    .map-details-statistic-each-bycity div div:first-child {
+        margin-bottom: 12px;
 
     }
 
+    .map-details-statistic-each-bycity>div div {
+        border-right: none;
+        /* margin-bottom: 12px; */
+
+    }
     .map-details-statistic-each-bycity>div div:nth-child(2) {
         border-right: none;
-        margin-bottom: 16px;
 
     }
-
+    
+    
     .details-content {
         padding: 20px;
     }
@@ -412,7 +434,7 @@
     }
 
     .map-details-statistic-main-bycity {
-        max-height: 252px;
+        max-height: 263px;
     }
 
     .map-details-content-statistic-each>div>h3 {
@@ -420,6 +442,19 @@
     }
     .map-details-content-statistic-each>div>span, .map-details-statistic-each-bycity .info-text span{
         font-size: 16px;
+    }
+    #info-box {
+        font-size: 0.9em;
+    }
+    .page-main-body {
+     
+        height: 80vh;
+    }
+    .page-main-body .container-width {
+    width: 100%;
+    }
+    .page-main-body .container-width object {
+        width: 90%;
     }
 }
 
@@ -430,20 +465,26 @@
     position: absolute;
    
     transition: top 0.3s, left 0.3s;
-    /* z-index: 1000; */
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    #info-box {
-        font-size: 0.9em;
-    }
-}
+
 
 @media (max-width: 480px) {
+    .map-details-statistic-each-bycity>span {
+        font-size: 16px;
+    }
+    .page-main-body {
+     
+        height: 50vh;
+    }
+    
+    .page-main-body .container-width {
+       width: 100%;
+    }
     .map-details-content-statistic-each {
         width: 48%;
     }
+
 
     .map-details-content-statistic-main {
         gap: 10px;
@@ -452,7 +493,7 @@
         font-size: 12px;
     }
     .map-details-statistic-main-bycity {
-        max-height: 220px;
+        max-height: 213px;
     }
     .map-details-content-statistic-each>div>img {
         width: 24px;
@@ -506,5 +547,12 @@
     .modal-more-btn{
         margin-top: 4px;
     }
+
+}
+
+
+
+.details-content{
+    transition: top 0.3s, left 0.3s;
 
 }

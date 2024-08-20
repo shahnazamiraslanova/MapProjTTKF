@@ -387,7 +387,7 @@ const colors = {
         female: 2200,
         percentMale: 44,
         percentFemale: 44,
-        about: "Lorem ipsum dolor sit amet consectetur. Eget quis eget nulla etiam magna integer egestas. In aliquet et leo diam.",
+        about: "Lorem ipsum dolor sit amet consectetur. Eget quis eget nulla etiam magna integer egestas.",
         sosialTTK: '44',
         standartTTK: "56",
         cities: [
@@ -677,10 +677,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    let top = rect.top  - infoBox.offsetHeight / 2; // Yuxarıdan orta mövqe
-    let left = rect.left + window.scrollX + rect.width / 2 - infoBox.offsetWidth / 2; // Sol tərəfdən orta mövqe
+    let top = rect.top  - infoBox.offsetHeight / 2;  
+    let left = rect.left + window.scrollX + rect.width / 2 - infoBox.offsetWidth / 2; 
 
-    // Ekranın kənarlarına uyğun düzəlişlər
     if (left + infoBox.offsetWidth > viewportWidth) {
         left = viewportWidth - infoBox.offsetWidth - 20;
     }
@@ -809,7 +808,7 @@ document.addEventListener('DOMContentLoaded', () => {
              </div>
           </div>    
         <div>
-       <div>
+       <div >
        <h3>${item.female}</h3>
        <img src="./frq-templates/assets/img/xerite/womenicon.svg" alt="">
        </div>
@@ -848,7 +847,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('')}      </div>
 
   `
+  detailsOverlay.classList.add('show'); 
         detailsOverlay.style.display = 'flex';
+        adjustCityDivWidth()
+
     }
 
     detailsOverlay.addEventListener('click', (event) => {
@@ -859,5 +861,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector(".close-details-map").addEventListener("click", () => {
         detailsOverlay.style.display = 'none';
+        resetElement(ele)
     });
 });
+
+
+function adjustCityDivWidth() {
+    const mainDiv = document.querySelector('.map-details-statistic-main-bycity');
+    if (!mainDiv) return;
+
+    const mainDivHeight = mainDiv.offsetHeight;
+    const cityDivs = document.querySelectorAll('.map-details-statistic-each-bycity');
+
+    const breakpoint = window.innerWidth < 768 ? 200 : 407;
+    const newWidth = mainDivHeight > breakpoint ? '99%' : '100%';
+
+    cityDivs.forEach(div => {
+        div.style.width = newWidth;
+    });
+}
+
+document.querySelectorAll('.details-modal').forEach(modal => {
+    modal.addEventListener('show.bs.modal', adjustCityDivWidth);
+});
+
+window.addEventListener('resize', adjustCityDivWidth);
+
+
